@@ -13,6 +13,7 @@ import java.util.GregorianCalendar;
 public class MainActivity extends AppCompatActivity {
 
     Button btn1Web, but1Calendar, btn1Map;
+    Button btn2Web, btn2Calendar, btn2Map;
     TextView textViewStatus;
 
     @Override
@@ -74,6 +75,54 @@ public class MainActivity extends AppCompatActivity {
                 textViewStatus.setText("Code should display map for performance 1");
             }
         });
+
+        /**
+         *   Set up button click event listener for the web info button for the second performance
+         */
+        btn2Web = (Button) findViewById(R.id.button2WebInfo);
+        btn2Web.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Do something in response to button click
+                textViewStatus.setText("Code should display website for performance 2");
+            }
+        });
+
+        /**
+         *   Set up button click event listener for the celendar button for the second performance
+         *       Use the calendar intent to set an event reminder on the calendar
+         */
+        btn2Calendar = (Button) findViewById(R.id.button2Calendar);
+        btn2Calendar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Do something in response to button click
+                textViewStatus.setText("Code should set a calendar event for performance 2");
+                Intent calIntent = new Intent(Intent.ACTION_INSERT);
+                calIntent.setType("vnd.android.cursor.item/event");
+                calIntent.putExtra(CalendarContract.Events.TITLE, "Celebrate Spring");
+                calIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, "Mitchell Auditorim");
+                GregorianCalendar begDate = new GregorianCalendar(2018, 3, 8, 19, 30);
+                GregorianCalendar endDate = new GregorianCalendar(2017, 2, 24, 21, 30);
+                calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+                        begDate.getTimeInMillis());
+                calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
+                        endDate.getTimeInMillis());
+                startActivity(calIntent);
+
+            }
+        });
+
+        /**
+         *   Set up button click event listener for the web info button for second first performance
+         */
+        btn2Map = (Button) findViewById(R.id.button2map);
+        btn2Map.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Do something in response to button click
+                textViewStatus.setText("Code should display map for performance 2");
+            }
+        });
+
+
 
 
     }
