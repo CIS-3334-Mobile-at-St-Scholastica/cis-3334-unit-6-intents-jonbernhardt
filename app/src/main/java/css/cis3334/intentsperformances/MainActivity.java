@@ -1,6 +1,9 @@
 package css.cis3334.intentsperformances;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +41,12 @@ public class MainActivity extends AppCompatActivity {
         btn1Web.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
+                Uri webpage = Uri.parse("http://www.css.edu/about/spotlight-arts-and-lectures.html");
+                Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
                 textViewStatus.setText("Code should display website for performance 1");
+                if (checkIntent(webIntent) == true) {
+                    startActivity(webIntent);
+                }
             }
         });
 
@@ -60,7 +69,9 @@ public class MainActivity extends AppCompatActivity {
                         begDate.getTimeInMillis());
                 calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
                         endDate.getTimeInMillis());
-                startActivity(calIntent);
+                if (checkIntent(calIntent) == true) {
+                    startActivity(calIntent);
+                }
 
             }
         });
@@ -71,8 +82,12 @@ public class MainActivity extends AppCompatActivity {
         btn1Map = (Button) findViewById(R.id.button1map);
         btn1Map.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Do something in response to button click
+                Uri location = Uri.parse("geo:0,0?q=1200+Kenwood+Ave,+Duluth,+Minnesota");
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
                 textViewStatus.setText("Code should display map for performance 1");
+                if (checkIntent(mapIntent) == true) {
+                    startActivity(mapIntent);
+                }
             }
         });
 
@@ -83,7 +98,12 @@ public class MainActivity extends AppCompatActivity {
         btn2Web.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
+                Uri webpage = Uri.parse("http://www.css.edu/about/spotlight-arts-and-lectures/calendar.html?trumbaEmbed=eventid%3d124648615%26view%3devent%26-childview%3d");
+                Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
                 textViewStatus.setText("Code should display website for performance 2");
+                if (checkIntent(webIntent) == true) {
+                    startActivity(webIntent);
+                }
             }
         });
 
@@ -106,7 +126,9 @@ public class MainActivity extends AppCompatActivity {
                         begDate.getTimeInMillis());
                 calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
                         endDate.getTimeInMillis());
-                startActivity(calIntent);
+                if (checkIntent(calIntent) == true) {
+                    startActivity(calIntent);
+                }
 
             }
         });
@@ -117,15 +139,28 @@ public class MainActivity extends AppCompatActivity {
         btn2Map = (Button) findViewById(R.id.button2map);
         btn2Map.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Do something in response to button click
+                Uri location = Uri.parse("geo:0,0?q=1200+Kenwood+Ave,+Duluth,+Minnesota");
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
                 textViewStatus.setText("Code should display map for performance 2");
+                if (checkIntent(mapIntent) == true) {
+                    startActivity(mapIntent);
+                }
             }
         });
 
 
-
-
     }
 
+    /**
+     * Check if there is an activity to handle the intent.
+     * @param intent
+     * @return
+     */
+    public boolean checkIntent (Intent intent){
+        PackageManager packageManager = getPackageManager();
+        List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
+        boolean isIntentSafe = activities.size() > 0;
+        return isIntentSafe;
+    }
 
 }
