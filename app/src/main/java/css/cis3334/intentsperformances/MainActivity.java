@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 // Do something in response to button click
                 Uri webpage = Uri.parse("http://www.css.edu/about/spotlight-arts-and-lectures.html");
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
-                textViewStatus.setText("Code should display website for performance 1");
+                //textViewStatus.setText("Code should display website for performance 1");
                 if (checkIntent(webIntent) == true) {
                     startActivity(webIntent);
                 }
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         but1Calendar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
-                textViewStatus.setText("Code should set a calendar event for performance 1");
+                //textViewStatus.setText("Code should set a calendar event for performance 1");
                 Intent calIntent = new Intent(Intent.ACTION_INSERT);
                 calIntent.setType("vnd.android.cursor.item/event");
                 calIntent.putExtra(CalendarContract.Events.TITLE, "SAL Colloquium 'The Robot Next Door'");
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Uri location = Uri.parse("geo:0,0?q=1200+Kenwood+Ave,+Duluth,+Minnesota");
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
-                textViewStatus.setText("Code should display map for performance 1");
+                //textViewStatus.setText("Code should display map for performance 1");
                 if (checkIntent(mapIntent) == true) {
                     startActivity(mapIntent);
                 }
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 // Do something in response to button click
                 Uri webpage = Uri.parse("http://www.css.edu/about/spotlight-arts-and-lectures/calendar.html?trumbaEmbed=eventid%3d124648615%26view%3devent%26-childview%3d");
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
-                textViewStatus.setText("Code should display website for performance 2");
+                //textViewStatus.setText("Code should display website for performance 2");
                 if (checkIntent(webIntent) == true) {
                     startActivity(webIntent);
                 }
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         btn2Calendar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
-                textViewStatus.setText("Code should set a calendar event for performance 2");
+                //textViewStatus.setText("Code should set a calendar event for performance 2");
                 Intent calIntent = new Intent(Intent.ACTION_INSERT);
                 calIntent.setType("vnd.android.cursor.item/event");
                 calIntent.putExtra(CalendarContract.Events.TITLE, "Celebrate Spring");
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Uri location = Uri.parse("geo:0,0?q=1200+Kenwood+Ave,+Duluth,+Minnesota");
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
-                textViewStatus.setText("Code should display map for performance 2");
+                //textViewStatus.setText("Code should display map for performance 2");
                 if (checkIntent(mapIntent) == true) {
                     startActivity(mapIntent);
                 }
